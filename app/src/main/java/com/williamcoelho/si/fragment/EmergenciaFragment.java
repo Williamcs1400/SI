@@ -1,21 +1,31 @@
 package com.williamcoelho.si.fragment;
 
+import android.content.Intent;
+import android.graphics.drawable.RotateDrawable;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.RotateAnimation;
+import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.williamcoelho.si.R;
+import com.williamcoelho.si.activity.AdicionarNumeroActivity;
+import com.williamcoelho.si.activity.MainActivity;
+import com.williamcoelho.si.activity.QuemSomosActivity;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ConfigFragment#newInstance} factory method to
+ * Use the {@link EmergenciaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ConfigFragment extends Fragment {
+public class EmergenciaFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +36,7 @@ public class ConfigFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ConfigFragment() {
+    public EmergenciaFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +49,8 @@ public class ConfigFragment extends Fragment {
      * @return A new instance of fragment ConfigFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ConfigFragment newInstance(String param1, String param2) {
-        ConfigFragment fragment = new ConfigFragment();
+    public static EmergenciaFragment newInstance(String param1, String param2) {
+        EmergenciaFragment fragment = new EmergenciaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,7 +70,17 @@ public class ConfigFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_config, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_emergencia, container, false);
+        FloatingActionButton fabPrincipal = view.findViewById(R.id.fabEmer);
+
+        fabPrincipal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), AdicionarNumeroActivity.class);
+                startActivity(i);
+            }
+        });
+        return view;
     }
 }

@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.AjudaFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textQuemSomos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
+        android:background="	#DCDCDC"
         android:gravity="center"
-        android:text="AJUDA"
-        android:textSize="80sp" />
+        android:onClick="abrirQuem"
+        android:text="Quem somos?"
+        android:textSize="40sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textViewCadastro"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="	#D3D3D3"
+        android:gravity="center"
+        android:text="É preciso ter cadastro?"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/textViewUsar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#DCDCDC	"
+        android:gravity="center"
+        android:text="Como usar o App?"
+        android:textSize="40sp" />
+
+</LinearLayout>

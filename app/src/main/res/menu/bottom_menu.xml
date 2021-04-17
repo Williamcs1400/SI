@@ -9,16 +9,16 @@
     <item
         android:id="@+id/calendar"
         android:icon="@drawable/ic_calendar"
-        android:title="Activity"
+        android:title="Caledário"
         app:cnb_iconColor="#FF0000"/>
     <item
         android:id="@+id/favorites"
-        android:icon="@drawable/ic_baseline_favorite_24"
-        android:title="Favorites"
+        android:icon="@drawable/ic_baseline_call_24"
+        android:title="Emergência"
         app:cnb_iconColor="#FF0000" />
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_baseline_help_24"
-        android:title="Settings"
+        android:title="Ajuda"
         app:cnb_iconColor="#FF0000" />
 </menu>

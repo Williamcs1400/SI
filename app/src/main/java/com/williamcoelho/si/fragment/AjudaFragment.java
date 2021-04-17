@@ -1,5 +1,6 @@
 package com.williamcoelho.si.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.williamcoelho.si.R;
+import com.williamcoelho.si.activity.AjudaCadastroActivity;
+import com.williamcoelho.si.activity.AjudaUsarActivity;
+import com.williamcoelho.si.activity.QuemSomosActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +30,11 @@ public class AjudaFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    TextView textQuem;
+    TextView textCadastro;
+    TextView textUsar;
+
 
     public AjudaFragment() {
         // Required empty public constructor
@@ -61,6 +71,40 @@ public class AjudaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ajuda, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_ajuda, container, false);
+        textQuem = view.findViewById(R.id.textQuemSomos);
+        textCadastro = view.findViewById(R.id.textViewCadastro);
+        textUsar = view.findViewById(R.id.textViewUsar);
+
+        textQuem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), QuemSomosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        textCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AjudaCadastroActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        textUsar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AjudaUsarActivity.class);
+                startActivity(intent);
+            }
+        });
+        return view;
+    }
+
+    public void abrirQuem(View view){
+        Intent intent = new Intent(getActivity(), QuemSomosActivity.class);
+        startActivity(intent);
     }
 }

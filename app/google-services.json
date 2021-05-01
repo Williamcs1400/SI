@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "366257228329",
+    "firebase_url": "https://sistemadainfor-default-rtdb.firebaseio.com",
+    "project_id": "sistemadainfor",
+    "storage_bucket": "sistemadainfor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366257228329:android:20b966e6f747f354d06a38",
+        "android_client_info": {
+          "package_name": "com.williamcoelho.si"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "366257228329-201hob944l1dff6vhbr7nnmojpvs4ije.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT2z6I7esYUm8oVru2RpDFjof9H_Vdh78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "366257228329-201hob944l1dff6vhbr7nnmojpvs4ije.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

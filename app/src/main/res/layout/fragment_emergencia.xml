@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".fragment.EmergenciaFragment">
 
+    <include layout="@layout/content_emergencia" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabEmer"
         android:layout_width="wrap_content"

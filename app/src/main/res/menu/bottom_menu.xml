@@ -5,20 +5,20 @@
         android:id="@+id/inicial"
         android:icon="@drawable/ic_home"
         android:title="Home"
-        app:cnb_iconColor="#FF0000"/>
+        app:cnb_iconColor="#0049FF"/>
     <item
         android:id="@+id/calendar"
         android:icon="@drawable/ic_calendar"
         android:title="Caledário"
-        app:cnb_iconColor="#FF0000"/>
+        app:cnb_iconColor="#0049FF"/>
     <item
         android:id="@+id/favorites"
         android:icon="@drawable/ic_baseline_call_24_black"
         android:title="Emergência"
-        app:cnb_iconColor="#FF0000" />
+        app:cnb_iconColor="#0049FF" />
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_baseline_help_24"
         android:title="Ajuda"
-        app:cnb_iconColor="#FF0000" />
+        app:cnb_iconColor="#0049FF" />
 </menu>

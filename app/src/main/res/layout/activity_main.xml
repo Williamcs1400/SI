@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/white"
-        app:cnb_badgeColor="#DB0000"
+        app:cnb_badgeColor="#0049FF"
         app:cnb_iconSize="35dp"
         app:cnb_menuResource="@menu/bottom_menu" />
 

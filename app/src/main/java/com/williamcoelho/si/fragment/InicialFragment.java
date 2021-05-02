@@ -1,14 +1,37 @@
 package com.williamcoelho.si.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.williamcoelho.si.R;
+import com.williamcoelho.si.activity.AddMedicamentosActivity;
+import com.williamcoelho.si.activity.AdicionarNumeroActivity;
+import com.williamcoelho.si.adapter.EmergenciaAdapter;
+import com.williamcoelho.si.adapter.InicialAdapter;
+import com.williamcoelho.si.model.Medicamentos;
+import com.williamcoelho.si.model.NumerosEmergencia;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,19 +49,17 @@ public class InicialFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private FloatingActionButton fabIncial;
+    private DatabaseReference myRef;
+    List<Medicamentos> listaMedicamentos = new ArrayList<>();
+    private ChildEventListener childEventListenerRef;
+    private RecyclerView recyclerView;
+    private InicialAdapter medicamentosAdapter;
+
     public InicialFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PrimeiroFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static InicialFragment newInstance(String param1, String param2) {
         InicialFragment fragment = new InicialFragment();
         Bundle args = new Bundle();
@@ -61,6 +82,85 @@ public class InicialFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_primeiro, container, false);
+        View view =  inflater.inflate(R.layout.fragment_primeiro, container, false);
+
+        fabIncial = view.findViewById(R.id.floatingActionButtonInicial);
+        recyclerView = view.findViewById(R.id.recyclerViewInicial);
+        fabIncial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), AddMedicamentosActivity.class);
+                startActivity(i);
+            }
+        });
+
+        carregarLista();
+
+        return view;
+    }
+
+    public void carregarLista(){
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef = database.getReference().child("medicamentos");
+
+        medicamentosAdapter = new InicialAdapter(listaMedicamentos);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
+        recyclerView.setAdapter(medicamentosAdapter);
+
+
+    }
+
+    public void recuperar(){
+
+        listaMedicamentos.clear();
+
+        childEventListenerRef = myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                Medicamentos med = snapshot.getValue(Medicamentos.class);
+                Log.i("INFO LISTA", "Passou" + med);
+                listaMedicamentos.add(med);
+                medicamentosAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        recuperar();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        myRef.removeEventListener(childEventListenerRef);
     }
 }

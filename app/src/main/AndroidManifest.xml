@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SI">
-        <activity android:name=".activity.AdicionarNumeroActivity"></activity>
+        <activity android:name=".activity.AddMedicamentosActivity"></activity>
+        <activity android:name=".activity.AdicionarNumeroActivity" />
         <activity android:name=".activity.AjudaUsarActivity" />
         <activity android:name=".activity.AjudaCadastroActivity" />
         <activity android:name=".activity.QuemSomosActivity" />

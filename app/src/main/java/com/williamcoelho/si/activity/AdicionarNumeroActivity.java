@@ -63,6 +63,8 @@ public class AdicionarNumeroActivity extends AppCompatActivity {
             finish();
 
         }else{
+            Toast toast = Toast.makeText(getApplicationContext(), "Não é permitido deixar nenhuma opção vazia", Toast.LENGTH_SHORT);
+            toast.show();
             finish();
         }
 
